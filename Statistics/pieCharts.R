@@ -55,11 +55,12 @@ mgradeCount <- table(mgrades)
 mgradeCount <- data.frame(rbind(mgradeCount))
 mgradeCount <-c(mgradeCount$A,mgradeCount$B,mgradeCount$C,mgradeCount$D,mgradeCount$E,mgradeCount$F)
 piepercent<- round(100 * mgradeCount / sum(mgradeCount), 1)
+jpeg(file="assets/malePiechart.jpeg")
 pie(mgradeCount,labels = piepercent,
     main = "Male Grades", col = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red"))
 legend("topright", c("A","B","C","D","E","F"),
        cex = 0.5, fill = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red") )
-
+dev.off()
 
 
 
@@ -67,17 +68,13 @@ fgradeCount <- table(fgrades)
 fgradeCount <- data.frame(rbind(fgradeCount))
 fgradeCount <-c(fgradeCount$A,fgradeCount$B,fgradeCount$C,fgradeCount$D,fgradeCount$E,fgradeCount$F)
 piepercent<- round(100 * fgradeCount / sum(fgradeCount), 1)
+jpeg(file="assets/femalePiechart.jpeg")
 pie(mgradeCount,labels = piepercent,
     main = "Female Grades", col = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red"))
 legend("topright", c("A","B","C","D","E","F"),
        cex = 0.5, fill = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red") )
+dev.off();
 
-
-
-maleVSfemalePercentage <- data.frame(c(percentage), c(gender))
-attach(maleVSfemalePercentage)
-names(maleVSfemalePercentage)
-class(maleVSfemalePercentage$c.gender)
 
 
 

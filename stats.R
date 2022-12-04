@@ -1,85 +1,32 @@
-library(ggplot2)
-library(tidyverse)
 setwd("F:/Prob_Project")
 
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
-
-male <-  dataSet%>%
-  filter(gender=="male")
-female <-  dataSet%>%
-  filter(gender=="female")
-
-male <- ((male$math+male$reading+male$writing)/3)
-female <- ((female$math+female$reading+female$writing)/3)
-
-fgrades <- list()
-fgrades <- NULL
-for(x in female)
-{
-  if (x >= 81)
-    fgrades <- append(fgrades, 'A')
-  else if (x >= 71)
-    fgrades <- append(fgrades, 'B')
-  else if (x >= 61)
-    fgrades <- append(fgrades, 'C')
-  else if (x >= 51)
-    fgrades <- append(fgrades, 'D')
-  else if (x >= 41)
-    fgrades <- append(fgrades, 'E')
-  else
-    fgrades <- append(fgrades, 'F')
+datafilter <- function(varaibleName){
+  if (varaibleName == "math")
+    {return (dataSet$math)}
+  else if(varaibleName == "reading")
+    {return (dataSet$reading);}
+  else if(varaibleName == "writing")
+    {return (dataSet$writing);}
 }
 
-mgrades <- list()
-mgrades <- NULL
-for(x in male)
-{
-  if (x >= 81)
-    mgrades <- append(mgrades, 'A')
-  else if (x >= 71)
-    mgrades <- append(mgrades, 'B')
-  else if (x >= 61)
-    mgrades <- append(mgrades, 'C')
-  else if (x >= 51)
-    mgrades <- append(mgrades, 'D')
-  else if (x >= 41)
-    mgrades <- append(mgrades, 'E')
-  else
-    mgrades <- append(mgrades, 'F')
-}
-labels <-  c("A","B","C","D","E","F")
+x1 <- datafilter("math");
+y1 <- datafilter("reading");
+y2 <- datafilter("writing");
 
 
-mgradeCount <- table(mgrades)
-mgradeCount <- data.frame(rbind(mgradeCount))
-mgradeCount <-c(mgradeCount$A,mgradeCount$B,mgradeCount$C,mgradeCount$D,mgradeCount$E,mgradeCount$F)
-piepercent<- round(100 * mgradeCount / sum(mgradeCount), 1)
-pie(mgradeCount,labels = piepercent,
-    main = "Male Grades", col = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red"))
-legend("topright", c("A","B","C","D","E","F"),
-       cex = 0.5, fill = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red") )
-
-
-
-
-fgradeCount <- table(fgrades)
-fgradeCount <- data.frame(rbind(fgradeCount))
-fgradeCount <-c(fgradeCount$A,fgradeCount$B,fgradeCount$C,fgradeCount$D,fgradeCount$E,fgradeCount$F)
-piepercent<- round(100 * fgradeCount / sum(fgradeCount), 1)
-pie(mgradeCount,labels = piepercent,
-    main = "Female Grades", col = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red"))
-legend("topright", c("A","B","C","D","E","F"),
-       cex = 0.5, fill = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red") )
-
-
-
-maleVSfemalePercentage <- data.frame(c(percentage), c(gender))
-attach(maleVSfemalePercentage)
-names(maleVSfemalePercentage)
-class(maleVSfemalePercentage$c.gender)
-
-
+plot(x = x1,y = y1,
+     xlab = "math",
+     ylab = "reading",
+     xlim = c(0,100),
+     ylim = c(0,100),		 
+     col = "blue",
+     main = "Weight vs Milage",
+     pch = 16,
+     cex = .5
+)
+abline(lm(x1~y1),col = "red",lwd = 2)
 
 
 

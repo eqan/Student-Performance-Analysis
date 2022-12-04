@@ -16,8 +16,10 @@ attach(maleVSfemalePercentage)
 names(maleVSfemalePercentage)
 class(maleVSfemalePercentage$c.gender)
 
-boxplot(maleVSfemalePercentage$c.percentage. ~ maleVSfemalePercentage$c.gender.,xlab = "percentage",
-        ylab = "gender", 
+
+jpeg(file="assets/GenderBoxPlot.jpeg")
+boxplot(maleVSfemalePercentage$c.percentage. ~ maleVSfemalePercentage$c.gender.,xlab = "Gender",
+        ylab = "Percentage", 
         main = "Percentage Box plot w.r.t genders",
         varwidth = TRUE, 
         col = c("lightblue","lightgreen"),
@@ -28,6 +30,6 @@ stripchart(maleVSfemalePercentage$c.percentage. ~ maleVSfemalePercentage$c.gende
            col = 4:2,
            vertical = TRUE,
            add = TRUE)
-
+dev.off();
 
 
