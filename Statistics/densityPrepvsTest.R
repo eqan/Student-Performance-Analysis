@@ -1,6 +1,7 @@
-
 library(ggplot2)
 library(tidyverse)
+setwd("F:/Prob_Project")
+
 
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 

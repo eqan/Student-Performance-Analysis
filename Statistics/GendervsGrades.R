@@ -1,7 +1,7 @@
 library(ggplot2)
 library(tidyverse)
-
-dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
+setwd("F:/Prob_Project")
+dataSet <- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
 percentage <- ((dataSet$math+dataSet$reading+dataSet$writing)/3)
 gender <- (dataSet$gender)
