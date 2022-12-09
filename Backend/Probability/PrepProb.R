@@ -1,10 +1,17 @@
-setwd("F:/Prob_Project")
-
+setwd("F:/Prob_Project/Backend")
+library(tidyverse)
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
-score = 65;
-subject = 'm';
-prep = 'c';
+#dunction to calculate prob to score upto that score 
+prob = function(sc, sb, prepStatus){
+setwd("F:/Prob_Project/Backend")
+library(tidyverse)
+dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
+  
+  
+score = sc;
+subject = sb;
+prep = prepStatus;
 
 filterData = function(prep){
   if (prep == "c")
@@ -27,6 +34,7 @@ filterData = function(prep){
 }
 
 data1 <- filterData(prep)
+
 
 {
   
@@ -66,16 +74,18 @@ data1 <- filterData(prep)
 
 
 {
-  jpeg(file="ProbPartHist.jpeg")  
-  hist(data, prob=TRUE ,breaks=20,xlab = "writing",col = "lightblue",border = "black",main=prep);
+  jpeg(file="assets/ProbPartHist.jpeg")  
+  hist(data, prob=TRUE ,breaks=20,xlab = "marks",col = "lightblue",border = "black");
   x <- seq(min(data), max(data), length = 100)
   f <- dnorm(x, mean = mean(data), sd = sd(data))
   lines(x, f, col = "red", lwd = 2)
   dev.off();
 }
+return (probUpto);
+}
 
 
 
+ 
 
-
-
+ 

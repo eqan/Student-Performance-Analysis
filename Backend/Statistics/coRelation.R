@@ -1,8 +1,9 @@
+
 library(lattice)
 library(ggplot2)
 library(reshape2)
 
-setwd("F:/Prob_Project")
+setwd("F:/Prob_Project/Backend")
 
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
@@ -23,6 +24,10 @@ ggplot(data = melted_corr_mat, aes(x=Var1, y=Var2,fill=value)) +
   geom_text(aes(Var2, Var1, label = value),
             color = "white", size = 4)
 dev.off()
+
+
+
+
 
 
 

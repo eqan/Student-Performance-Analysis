@@ -1,6 +1,6 @@
 library(ggplot2)
 library(tidyverse)
-setwd("F:/Prob_Project")
+setwd("F:/Prob_Project/Backend")
 
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
@@ -30,6 +30,6 @@ stripchart(maleVSfemalePercentage$c.percentage. ~ maleVSfemalePercentage$c.gende
            col = 4:2,
            vertical = TRUE,
            add = TRUE)
-dev.off();
+dev.off()
 
 

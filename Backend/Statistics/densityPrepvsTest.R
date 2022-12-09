@@ -1,6 +1,6 @@
 library(ggplot2)
 library(tidyverse)
-setwd("F:/Prob_Project")
+setwd("F:/Prob_Project/Backend")
 
 
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
@@ -18,7 +18,9 @@ percentage_prepCompleted <- ((prepCompleted$math+prepCompleted$reading+prepCompl
 
 
 
+jpeg(file="assets/desnityTestPrep.jpeg")
 dat <-data.frame(dens = c(percentage_PrepNone,percentage_prepCompleted), 
                  lines = rep(c("none", "completed"),
                              times=c(length(percentage_PrepNone),length(percentage_prepCompleted))))
 ggplot(data = dat,mapping =  aes(x = dens, fill = lines)) + geom_density(alpha = 0.5)
+dev.off()

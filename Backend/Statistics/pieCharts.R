@@ -1,6 +1,6 @@
 library(ggplot2)
 library(tidyverse)
-setwd("F:/Prob_Project")
+setwd("F:/Prob_Project/Backend")
 
 dataSet<- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
@@ -73,7 +73,7 @@ pie(mgradeCount,labels = piepercent,
     main = "Female Grades", col = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red"))
 legend("topright", c("A","B","C","D","E","F"),
        cex = 0.5, fill = c("lightgreen","lightyellow","lightpink","lightblue","lavender","red") )
-dev.off();
+dev.off()
 
 
 

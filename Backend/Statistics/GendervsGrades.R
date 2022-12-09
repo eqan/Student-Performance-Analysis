@@ -1,6 +1,6 @@
 library(ggplot2)
 library(tidyverse)
-setwd("F:/Prob_Project")
+setwd("F:/Prob_Project/Backend")
 dataSet <- read.csv("StudentsPerformance.csv", header=TRUE, sep=",")
 
 percentage <- ((dataSet$math+dataSet$reading+dataSet$writing)/3)
@@ -28,6 +28,8 @@ for(x in percentage)
 maleVSfemaleGrades <- data.frame(c(percentage),c(grades),c(gender))
 count <- table(maleVSfemaleGrades$c.gender, maleVSfemaleGrades$c.grades)
 
+jpeg(file="assets/GendervsGradesBarChar.jpeg")
 barplot(count, main="Grades Distribution On Gender",
         xlab="Grades", col=c("lightblue","lightgreen"),
         legend = rownames(count), beside=TRUE)
+dev.off();
